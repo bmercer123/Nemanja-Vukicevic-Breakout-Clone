@@ -13,13 +13,31 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        livesText.text = "Lives: " + lives;
-        scoreText.text = "Score: " + score;
+        livesText.text = "Lives: " + lives; // setting the lives text for the UI
+        scoreText.text = "Score: " + score; // setting the score text for the UI
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void UpdateLives(int changeInLives)
+    {
+        lives += changeInLives;
+
+        //check for remaining lives part
+
+        livesText.text = "Lives: " + lives;
+    }
+
+    public void UpdateScore(int points)
+    {
+        score += points;
+
+        //check for remaining lives part
+
+        scoreText.text = "Score: " + score;
     }
 }

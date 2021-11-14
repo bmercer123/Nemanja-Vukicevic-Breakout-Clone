@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public bool inPlay;
     public Transform paddle;
     public float speed;
+    public GameManager gm; // referencing to the manager
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             inPlay = false;
+            gm.UpdateLives(-1);
         }
     }
 
@@ -44,6 +46,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.transform.CompareTag("brick"))  // if the collision is with the brick collider
         {
+            gm.UpdateScore(collision.gameObject.GetComponent<Brick>().points); // getting points value from Brick script
 
             Destroy(collision.gameObject);
         }
