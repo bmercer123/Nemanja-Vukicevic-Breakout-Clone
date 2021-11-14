@@ -7,6 +7,7 @@ public class Paddle : MonoBehaviour
     public float speed; //leaving as public for easier control through inspector
     public float rSE;
     public float lSE;
+    public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,10 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gm.gameOver)
+        {
+            return;
+        }
         //Paddle Movement
         //Matching the float with the Input Manager
         float horizontal = Input.GetAxis("Horizontal");

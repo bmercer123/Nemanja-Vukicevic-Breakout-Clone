@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public Text livesText;
     public Text scoreText;
+    public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,11 @@ public class GameManager : MonoBehaviour
     {
         lives += changeInLives;
 
-        //check for remaining lives part
+        if(lives<= 0)
+        {
+            lives = 0;
+            GameOver();
+        }
 
         livesText.text = "Lives: " + lives;
     }
@@ -35,9 +40,11 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int points)
     {
         score += points;
-
-        //check for remaining lives part
-
         scoreText.text = "Score: " + score;
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
     }
 }

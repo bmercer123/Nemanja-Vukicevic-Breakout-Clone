@@ -21,6 +21,11 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 direction = new Vector2(Random.Range(-3f,3f),1);
+        if (gm.gameOver)
+        {
+            return;
+        }
         if (!inPlay)
         {
             transform.position = paddle.position;
@@ -28,7 +33,7 @@ public class Ball : MonoBehaviour
         if(Input.GetButtonDown("Jump") && !inPlay)
         {
             inPlay = true;
-            rb.AddForce(Vector2.up * speed);
+            rb.AddForce(direction * speed);
         }
     }
 
